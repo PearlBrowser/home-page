@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="pearlhome.png" alt="Pearl Home Logo" class="logo">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search and peck around the web...">
+        <button id="searchButton" class="search-button"><i class="fas fa-search"></i></button>
+    </div>
+    <footer>
+        <h4>Powered by PeckUI</h4>
+    </footer>
+    <script>
+        document.getElementById("searchButton").addEventListener("click", function() {
+            var query = document.getElementById("searchInput").value;
+            if (query.trim() !== "") {
+                var searchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+                window.location.href = searchUrl;
+            }
+        });
+    </script>
+</body>
+</html>
