@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff4500, #ff8c00);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 120px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+            border-radius: 50%;
+        }
+        .search-bar {
+            width: 70%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .search-bar:focus {
+            transform: scale(1.05);
+        }
+        .search-button {
+            padding: 15px 20px;
+            border: none;
+            margin-top: -20px;
+            border-radius: 30px;
+            background-color: #ff0000;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-button:hover {
+            background-color: #ff4800;
+            transform: scale(1.05);
+        }
+        footer {
+            margin-top: 20px;
+        }
+        footer h4 {
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="pearlhome.png" alt="Pearl Home Logo" class="logo">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search and peck around the web...">
+        <button id="searchButton" class="search-button"><i class="fas fa-search"></i></button>
+        <br>
+        <br>
+        <h2>&copy; 2021-2024 Pearl. All rights reserved</h2>
+    </div>
+    <script>
+        document.getElementById("searchButton").addEventListener("click", function() {
+            var query = document.getElementById("searchInput").value;
+            if (query.trim() !== "") {
+                var searchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
+                window.location.href = searchUrl;
+            }
+        });
+    </script>
+</body>
+</html>
