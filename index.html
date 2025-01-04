@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-16">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Pearl Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <style>
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+            color: #f1faee;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #040a51;
-            color: white;
+            overflow: hidden;
         }
         .container {
             text-align: center;
             background: rgba(255, 255, 255, 0.1);
-            padding: 120px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
         }
         .logo {
-            width: 150px;
+            width: 120px;
             margin-bottom: 20px;
             animation: float 3s ease-in-out infinite;
             border-radius: 50%;
+            border: 3px solid #f1faee;
         }
         .search-bar {
-            width: 70%;
+            width: 80%;
             padding: 15px;
             border: none;
             border-radius: 30px;
             margin-bottom: 10px;
             font-size: 1.2em;
-            background-color: rgb(0, 0, 0);
-            color: rgb(136, 158, 230);
-            transition: transform 0.2s;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #f1faee;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
         }
         .search-bar:focus {
             transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
         .search-button {
-            padding: 15px 20px;
+            padding: 12px 20px;
             border: none;
-            margin-top: -20px;
             border-radius: 30px;
-            background-color: #788dad;
-            color: white;
+            background-color: #1d3557;
+            color: #f1faee;
             font-size: 1.2em;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .search-button:hover {
-            background-color: #5b4eea;
+            background-color: #457b9d;
             transform: scale(1.05);
         }
         footer {
             margin-top: 20px;
+            font-size: 0.9em;
         }
         footer h4 {
             font-weight: 400;
@@ -81,16 +86,23 @@
     <div class="container">
         <img src="pearlhome.png" alt="Pearl Home Logo" class="logo">
         <input type="text" id="searchInput" class="search-bar" placeholder="Search and peck around the web...">
-        <button id="searchButton" class="search-button"><i class="fas fa-search"></i></button>
-        <br>
-        <br>
+        <footer>
+            <h4>Developed by ZoeyDev - version 1.0.233.0</h4>
+        </footer>
     </div>
     <script>
-        document.getElementById("searchButton").addEventListener("click", function() {
+        function performSearch() {
             var query = document.getElementById("searchInput").value;
             if (query.trim() !== "") {
                 var searchUrl = "https://www.google.com/search?q=" + encodeURIComponent(query);
                 window.location.href = searchUrl;
+            }
+        }
+        document.getElementById("searchButton").addEventListener("click", performSearch);
+        document.getElementById("searchInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                performSearch();
             }
         });
     </script>
